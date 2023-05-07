@@ -31,7 +31,7 @@ import tesla from "./company/tesla.png";
 
 import carrent from "./carrent.png";
 import ecommerce from "./Ecommerce.png"
-import parking from  './Parkingpayment.png'
+import parking from  './ParkingPayment.png'
 import health from './Health-app.png'
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
