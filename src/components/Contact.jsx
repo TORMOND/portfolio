@@ -6,6 +6,7 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import {setDoc, collection, db, doc} from "../firebase"
 
 const Contact = () => {
   const formRef = useRef();
@@ -27,41 +28,56 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setLoading(true);
-
-    emailjs.send(
-        import.meta.env.EMAILJS_TEMPLATE_ID,
-        import.meta.env.EMAILJS_PUBLIC_KEY,
-        import.meta.env.EMAILJS_SERVICE_ID,
-        {
-          from_name: form.name,
-          to_name: "Victor Monderu",
-          from_email: form.email,
-          to_email: "victormonderu@gmail.com",
-          message: form.message,
-        }
+    const colRef = doc(collection(db,'mail'));
+    await setDoc(colRef, {
+      name: form.name,
+      to_name: "Victor Monderu",
+      from_email: form.email,
+      to_email: "victormonderu@gmail.com",
+      message: form.message,
+    }).then(()=>{
+        console.log("Message Sent")
+        setLoading(false)
+    })
+    .catch((error)=>{
+      console.log(error.message)
+      setLoading(false)
+    });
     
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
+    // emailjs.send(
+    //     'service_dymetdj',
+    //    'template_t0rz8fo',
+    //     {
+    //       from_name: form.name,
+    //       to_name: "Victor Monderu",
+    //       from_email: form.email,
+    //       to_email: "victormonderu@gmail.com",
+    //       message: form.message,
+    //     },
+    //     '2uTdmr0OS2UmZ0ZmU'
+    
+    //   )
+    //   .then(
+    //     () => {
+    //       setLoading(false);
+    //       alert("Thank you. I will get back to you as soon as possible.");
 
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
+    //       setForm({
+    //         name: "",
+    //         email: "",
+    //         message: "",
+    //       });
+    //     },
+    //     (error) => {
+    //       setLoading(false);
+    //       console.error(error);
 
-          alert("something went wrong. Please try again.");
-        }
-      );
+    //       alert("something went wrong. Please try again.");
+    //     }
+    //   );
   };
 
   return (

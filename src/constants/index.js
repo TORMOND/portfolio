@@ -82,10 +82,6 @@ const technologies = [
     icon: vue,
   },
   {
-    name: "TypeScript",
-    icon: typescript,
-  },
-  {
     name: "React JS",
     icon: reactjs,
   },

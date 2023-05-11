@@ -1,10 +1,11 @@
 import React from "react";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
+// import from 'index.css'
 
 const About2 = () => {
     return ( 
-        <div className="flex gap-5  items-center direction-column" >
+        <div className="flex gap-5 flex-col lg:flex-row" >
             <div>
             <h3 className={styles.sectionHeadText}>About</h3>
               <div>
@@ -22,15 +23,13 @@ const About2 = () => {
 
             </div>
 
-            {/* <div className="relative pr-4  w-1/2 h-96">
-                <div className="absolute mt-[-25] mb-16 z-[-1] w-96 h-full outline outline-4">
-                </div>
-            <img src="profilepic.jpg" alt="" className="absolute z-1 object-cover w-4/5 h-4/5" />
-            </div> */}
-
-            <div>
-              
+            <div className="relative h-40 w-full lg:w-1/2">
+                <div className="loader"></div>
+                <div className="loader"></div>
+                <div className="loader"></div>
             </div>
+
+           
         </div>
      );
 }
