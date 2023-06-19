@@ -8,6 +8,10 @@ import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 import { fadeIn, textVariant } from "../utils/motion";
 
+// FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons';
+
 
 const ProjectCard = ({
   index,
@@ -15,6 +19,7 @@ const ProjectCard = ({
   description,
   tags,
   image,
+  link,
   source_code_link,
 }) => {
   return (
@@ -39,11 +44,13 @@ const ProjectCard = ({
               onClick={() => window.open(source_code_link, "_blank")}
               className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
             >
-              <img
+             
+              {link == 'website' ?  <FontAwesomeIcon icon={faLink} size="lg" />:<img
                 src={github}
                 alt='source code'
                 className='w-1/2 h-1/2 object-contain'
-              />
+              />}
+             
             </div>
           </div>
         </div>

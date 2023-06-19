@@ -1,7 +1,8 @@
 import React from "react";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
-// import from 'index.css'
+import { Resume } from "../assets";
+
 
 const About2 = () => {
     return ( 
@@ -16,9 +17,9 @@ const About2 = () => {
         create efficient, scalable, and user-friendly solutions that solve
         real-world problems. Let's work together to bring your ideas to life!
                 </p>
-                {/* <div>
-                <button className="mt-4 text-secondary outline outline-offset-2 rounded-lg  outline-2 py-2 px-4 hover:text-[#fff]">RESUME</button>
-            </div> */}
+                <div className="mt-4">            
+                <a href={Resume} className="mt-4 text-secondary outline outline-offset-2 rounded-lg  outline-2 py-2 px-4 hover:text-[#fff]" download>Download CV</a>
+            </div>
             </div>  
 
             </div>

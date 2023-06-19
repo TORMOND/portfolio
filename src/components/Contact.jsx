@@ -11,7 +11,8 @@ import {setDoc, collection, db, doc} from "../firebase"
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({
-    name: "",
+    firstName: "",
+    secondName: "",
     email: "",
     message: "",
   });
@@ -33,9 +34,10 @@ const Contact = () => {
     setLoading(true);
     const colRef = doc(collection(db,'mail'));
     await setDoc(colRef, {
-      name: form.name,
+      name: form.firstName + '' + form.secondName,
       to_name: "Victor Monderu",
       from_email: form.email,
+      number: form.number,
       to_email: "victormonderu@gmail.com",
       message: form.message,
     }).then(()=>{
@@ -82,7 +84,7 @@ const Contact = () => {
 
   return (
     <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
+      className={`xl:mt-12 flex xl:flex-row justify-center flex-col-reverse gap-10 overflow-hidden`}
     >
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
@@ -98,17 +100,31 @@ const Contact = () => {
         >
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Name</span>
+            <div className="grid grid-cols-1 gap-2.5 w-full lg:grid-cols-2">
             <input
               type='text'
               name='name'
-              value={form.name}
+              value={form.firstName}
               onChange={handleChange}
-              placeholder="What's your good name?"
+              placeholder="First Name?"
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
+            <input
+              type='text'
+              name='name'
+              value={form.secondName}
+              onChange={handleChange}
+              placeholder="Second Name?"
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+            />
+            </div>
+          
+           
+             
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your email</span>
+            <div className="grid grid-cols-1 gap-2.5 w-full lg:grid-cols-2">
             <input
               type='email'
               name='email'
@@ -117,6 +133,16 @@ const Contact = () => {
               placeholder="What's your web address?"
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
+             <input
+              type='number'
+              name='number'
+              value={form.number}
+              onChange={handleChange}
+              placeholder="Phone Number ?"
+              className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
+            />
+            </div>
+          
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Message</span>
@@ -139,12 +165,6 @@ const Contact = () => {
         </form>
       </motion.div>
 
-      <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className='xl:flex-1 xl:h-auto md:h-[550px] h-[350px]'
-      >
-        <EarthCanvas />
-      </motion.div>
     </div>
   );
 };

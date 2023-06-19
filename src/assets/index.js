@@ -22,12 +22,8 @@ import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 import vue from './tech/vue.svg';
-import firebase from './tech/firebase.png';
-
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
+import firebase from './tech/Firebase.svg';
+import Resume from "./Resume.pdf";
 
 import carrent from "./carrent.png";
 import ecommerce from "./Ecommerce.png"
@@ -61,14 +57,11 @@ export {
   threejs,
   vue,
   firebase,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
   ecommerce, 
   health,
   parking,
   carrent,
   jobit,
   tripguide,
+  Resume
 };
