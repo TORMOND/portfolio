@@ -97,10 +97,11 @@ const technologies = [
     name: "MongoDB",
     icon: mongodb,
   },
-  // {
-  //   name: "Three JS",
-  //   icon: threejs,
-  // },
+  {
+    name: "Next JS",
+    icon: threejs,
+  },
+  
   {
     name: "git",
     icon: git,
@@ -182,7 +183,7 @@ const projects = [
       },
     ],
     image: ecommerce,
-    link:'github',
+    link:'website',
     source_code_link: "https://beskmerchants.netlify.app",
   },
   {
